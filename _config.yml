@@ -95,16 +95,16 @@ friends: [
        title: "Hackbuteer F3",
         href: "https://github.com/HackbuteerF3"
     },{
-        title: "Flutter Developer",
+        title: "Flutter",
         href: "https://flutter.dev/"
     },
     {
-        title: "Android Developer",
+        title: "Android",
         href: "https://developer.android.google.cn/index.html"
     },
     {
-        title: "Toeii CSDN",
-        href: "https://blog.csdn.net/dengyanyi11"
-    }
+        title: "Golang",
+        href: "https://golang.google.cn/"
+    },
 ]
 
