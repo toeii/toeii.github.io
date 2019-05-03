@@ -150,6 +150,7 @@ SnapHelper正是通过该方法附着到RecyclerView上，从而实现辅助Recy
 在attachToRecyclerView()方法中会清掉SnapHelper之前保存的RecyclerView对象的回调(如果有的话)，对新设置进来的RecyclerView对象设置回调,然后初始化一个Scroller对象,最后调用snapToTargetExistingView()方法对SnapView进行对齐调整。
 
 #####snapToTargetExistingView()
+
 该方法的作用是对SnapView进行滚动调整，以使得SnapView达到对齐效果。
 
 看下源码：
