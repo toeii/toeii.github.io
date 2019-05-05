@@ -91,27 +91,27 @@ Android端代码：
 Flutter端
 
 ```java
-    _basicMessageChannel = BasicMessageChannel("com.simple.channelflutterandroid/basic", 
-    stringCodec())
-    // 发送消息
-    _basicMessageChannel.send("我是Flutter发送的消息");
-    // 接收消息
-    _basicMessageChannel.setMessageHandler((str){
-        print("It is Flutter -  receive str");
-    });
+_basicMessageChannel = BasicMessageChannel("com.simple.channelflutterandroid/basic", 
+stringCodec())
+// 发送消息
+_basicMessageChannel.send("我是Flutter发送的消息");
+// 接收消息
+_basicMessageChannel.setMessageHandler((str){
+    print("It is Flutter -  receive str");
+});
 ```
 
 Android端
 
 ```java
-    val basicMessageChannel = BasicMessageChannel<String>(flutterView, "com.simple.channelflutterandroid/basic", StringCodec.INSTANCE)
-    // 发送消息
-    basicMessageChannel.send("我是Native发送的消息")
-    // 接收消息
-    basicMessageChannel.setMessageHandler { o, reply ->
-        println("It is Native - setMessageHandler $o")
-        reply.reply("It is reply from native")
-    }
+val basicMessageChannel = BasicMessageChannel<String>(flutterView, "com.simple.channelflutterandroid/basic", StringCodec.INSTANCE)
+// 发送消息
+basicMessageChannel.send("我是Native发送的消息")
+// 接收消息
+basicMessageChannel.setMessageHandler { o, reply ->
+    println("It is Native - setMessageHandler $o")
+    reply.reply("It is reply from native")
+}
 ```
 
     其中StringCodec()，四种方式可选
@@ -121,26 +121,26 @@ Android端
 Flutter端
 
 ```java
-   static const BASIC_BINARY_NAME = "com.simple.channelflutterandroid/basic/binary";
-   // 发送消息
-   val res = await BinaryMessages.send(BASIC_BINARY_NAME, ByteData(256))
-   // 接收消息
-   BinaryMessages.setMessageHandler(BASIC_BINARY_NAME, (byteData){
-       println("It is Flutter - setMessageHandler $byteData")
-   });
+static const BASIC_BINARY_NAME = "com.simple.channelflutterandroid/basic/binary";
+// 发送消息
+val res = await BinaryMessages.send(BASIC_BINARY_NAME, ByteData(256))
+// 接收消息
+BinaryMessages.setMessageHandler(BASIC_BINARY_NAME, (byteData){
+    println("It is Flutter - setMessageHandler $byteData")
+});
 ```
 
 Android端
 
 ```java
-   const val BASIC_BINARY_NAME = "com.simple.channelflutterandroid/basic/binary"
-   // 发送消息
-   flutterView.send(BASIC_BINARY_NAME,ByteBuffer.allocate(256));
-   // 接收消息
-   flutterView.setMessageHandler(BASIC_BINARY_NAME) { byteBuffer, binaryReply ->
-       println("It is Native - setMessageHandler $byteBuffer")
-       binaryReply.reply(ByteBuffer.allocate(256))
-   }
+const val BASIC_BINARY_NAME = "com.simple.channelflutterandroid/basic/binary"
+// 发送消息
+flutterView.send(BASIC_BINARY_NAME,ByteBuffer.allocate(256));
+// 接收消息
+flutterView.setMessageHandler(BASIC_BINARY_NAME) { byteBuffer, binaryReply ->
+    println("It is Native - setMessageHandler $byteBuffer")
+    binaryReply.reply(ByteBuffer.allocate(256))
+}
 ```
 
 

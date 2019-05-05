@@ -31,38 +31,38 @@ tags:
 2，在项目的settings.gradle 文件添加如下代码
 
 ```java
-    // MyApp/settings.gradle
-    include ':app'                                    
-    setBinding(new Binding([gradle: this]))                                 
-    evaluate(new File(                                                    
-        settingsDir.parentFile,                                            
-        'my_flutter/.android/include_flutter.groovy'                       
-    )) 
+// MyApp/settings.gradle
+include ':app'                                    
+setBinding(new Binding([gradle: this]))                                 
+evaluate(new File(                                                    
+    settingsDir.parentFile,                                            
+    'my_flutter/.android/include_flutter.groovy'                       
+)) 
 ```
 
 3，在运行模块app的build.gradle添加依赖
 
 ```java
-   // MyApp/app/build.gradle
-    dependencies {
-        implementation project(':flutter')
-    }
+// MyApp/app/build.gradle
+dependencies {
+    implementation project(':flutter')
+}
 ```
 
 4，在原生Android端创建并添加flutterView
 
 ```java
-    val flutterView = Flutter.createView(this, lifecycle, "route1")
-    val layoutParams = FrameLayout.LayoutParams(-1, -1)
-    addContentView(flutterView, layoutParams)
+val flutterView = Flutter.createView(this, lifecycle, "route1")
+val layoutParams = FrameLayout.LayoutParams(-1, -1)
+addContentView(flutterView, layoutParams)
 ```
 
 5，在Flutter端入口操作
 
 ```java
-   void main() => runApp(_widgetForRoute(window.defaultRouteName));
+void main() => runApp(_widgetForRoute(window.defaultRouteName));
 
-    Widget _widgetForRoute(String route) {
+Widget _widgetForRoute(String route) {
     switch (route) {
         case 'route1':
         return SomeWidget(...);
@@ -71,7 +71,7 @@ tags:
             child: Text('Unknown route: $route', textDirection: TextDirection.ltr),
         );
     }
-    }
+}
 ```
 
 到这里，集成已经完成。

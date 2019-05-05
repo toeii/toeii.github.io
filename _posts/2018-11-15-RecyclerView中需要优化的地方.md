@@ -22,32 +22,32 @@ DIffUtils必须有两个数据集（这是它的弊端），用法如下：
 首先实现一个DiffCallBack
 
 ```java
-    private class DiffCallBack extends DiffUtil.Callback {
+private class DiffCallBack extends DiffUtil.Callback {
 
-        @Override
-        public int getOldListSize() {
-            return data.size();
-        }
-
-        @Override
-        public int getNewListSize() {
-            return newData.size();
-        }
-
-        @Override
-        public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-            return data.get(oldItemPosition).getType() == newData.get(newItemPosition).getType();
-        }
-
-        @Override
-        public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-            //这里需要对比数据，如果业务复杂，则不推荐使用DIffUtils
-            String oldStr = (String) DiffUtilDemoActivity.this.data.get(oldItemPosition).getData();
-            String newStr = (String) DiffUtilDemoActivity.this.newData.get(newItemPosition).getData();
-            return oldStr.equals(newStr);
-        }
+    @Override
+    public int getOldListSize() {
+        return data.size();
     }
-```java
+
+    @Override
+    public int getNewListSize() {
+        return newData.size();
+    }
+
+    @Override
+    public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+        return data.get(oldItemPosition).getType() == newData.get(newItemPosition).getType();
+    }
+
+    @Override
+    public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+        //这里需要对比数据，如果业务复杂，则不推荐使用DIffUtils
+        String oldStr = (String) DiffUtilDemoActivity.this.data.get(oldItemPosition).getData();
+        String newStr = (String) DiffUtilDemoActivity.this.newData.get(newItemPosition).getData();
+        return oldStr.equals(newStr);
+    }
+}
+```
 
 接着调用
 
@@ -72,13 +72,13 @@ GapWorker mGapWorker;
 通过在ontouchevent中触发预取的判断逻辑，在手指执行move操作的代码末尾有这么段代码
 
 ```java
-    case MotionEvent.ACTION_MOVE: {
-        ......
-            if (mGapWorker != null && (dx != 0 || dy != 0)) {
-                mGapWorker.postFromTraversal(this, dx, dy);
-            }
+case MotionEvent.ACTION_MOVE: {
+    ......
+        if (mGapWorker != null && (dx != 0 || dy != 0)) {
+            mGapWorker.postFromTraversal(this, dx, dy);
         }
-    } break;
+    }
+} break;
 ```
 
 通过每次move操作来判断是否预取下一个可能要显示的item数据，判断的依据就是通过传入的dx和dy得到手指接下来可能要移动的方向，如果dx或者dy的偏移量会导致下一个item要被显示出来则预取出来，但是并不是说预取下一个可能要显示的item一定都是成功的，其实每次recyclerView取出要显示的一个item本质上就是取出一个viewholder，根据viewholder上关联的itemview来展示这个item。而取出viewholder最核心的方法就是
@@ -90,26 +90,26 @@ GapWorker mGapWorker;
 看方法的参数也能找到和预取有关的信息,deadlineNs的一般取值有两种，一种是为了兼容版本25之前没有预取机制的情况，兼容25之前的参数为
 
 ```java
-    static final long FOREVER_NS = Long.MAX_VALUE;
+static final long FOREVER_NS = Long.MAX_VALUE;
 ```
 
 另一种就是实际的deadline数值，超过这个deadline则表示预取失败，这个其实也好理解，预取机制的主要目的就是提高recyclerView整体滑动的流畅性，如果要预取的viewholder会造成下一帧显示卡顿强行预取的话那就有点本末倒置了。
 关于预取成功的条件通过调用
 
 ```java
-    boolean willCreateInTime(int viewType, long approxCurrentNs, long deadlineNs) {
-                long expectedDurationNs = getScrapDataForType(viewType).mCreateRunningAverageNs;
-                return expectedDurationNs == 0 || (approxCurrentNs + expectedDurationNs < deadlineNs);
-    }
+boolean willCreateInTime(int viewType, long approxCurrentNs, long deadlineNs) {
+            long expectedDurationNs = getScrapDataForType(viewType).mCreateRunningAverageNs;
+            return expectedDurationNs == 0 || (approxCurrentNs + expectedDurationNs < deadlineNs);
+}
 ```
 
 来进行判断，approxCurrentNs的值为
 
 ```java
-    long start = getNanoTime();
-    if (deadlineNs != FOREVER_NS && !mRecyclerPool.willCreateInTime(type, start, deadlineNs)) {
-            return null;
-    }
+long start = getNanoTime();
+if (deadlineNs != FOREVER_NS && !mRecyclerPool.willCreateInTime(type, start, deadlineNs)) {
+        return null;
+}
 ```
 
 而mCreateRunningAverageNs就是创建同type的holder的平均时间，感兴趣的可以去看下这个值如何得到，不难理解就不贴代码了。关于预取就说到这里，想知道更多可以查看该[文章](https://juejin.im/entry/58a3f4f62f301e0069908d8f)
@@ -155,23 +155,32 @@ ViewCacheExtension
 
 ## 其他的细节优化
 1，itemanimator不必要的时候可以取消，调用((SimpleItemAnimator) rv.getItemAnimator()).setSupportsChangeAnimations(false)。
+
 2，getAdapterPosition和getLayoutPosition，最好使用getAdapterPosition。
+
 3，removeview和detachview其实差不多，因为removeview的内部会调用detachview，考虑业务理解层面removeview更适合。
+
 4，通过RecycleView.setItemViewCacheSize(size)保存嵌套RecyclerView的滑动状态。
+
 5，去除冗余的setItemclick事件，建议公用一个Listener，根据ID来进行不同的操作，优化了对象的频繁创建带来的资源消耗。
+
 6，通过 getExtraLayoutSpace 来增加 RecyclerView 预留的额外空间（显示范围之外，应该额外缓存的空间）。
+
 ```java
-    new LinearLayoutManager(this) {
-        @Override
-        protected int getExtraLayoutSpace(RecyclerView.State state) {
-            return size;
-        }
-    };
+new LinearLayoutManager(this) {
+    @Override
+    protected int getExtraLayoutSpace(RecyclerView.State state) {
+        return size;
+    }
+};
 ```
 
 7，通过重写 RecyclerView.onViewRecycled(holder) 来回收资源。
+
 8，设置 RecyclerView.addOnScrollListener(listener); 来对滑动过程中停止加载的操作。
+
 9，对TextView使用String.toUpperCase来替代android:textAllCaps="true"。
+
 10，对TextView使用StaticLayout或者DynamicLayout的自定义View来代替它。
 
 ## 总结

@@ -62,90 +62,90 @@ aar和jar分开收集是因为合并这两种文件的操作不同，jar只需�
 1，将fat-aar.gradle文件放入sdk/目录下
 
 ```XML
-    sdk
-        > build
-          libs
-        > src
-          .gitignore
-          build.gradle
-          fat-aar.gradle
-          ...
+sdk
+    > build
+        libs
+    > src
+        .gitignore
+        build.gradle
+        fat-aar.gradle
+        ...
 ```
 
 2，修改sdk/build.gradle脚本如下
 
 ```XML
-    apply plugin: 'com.android.library'
-    apply from: 'fat-aar.gradle'
+apply plugin: 'com.android.library'
+apply from: 'fat-aar.gradle'
 
-    android {
-        ...
-    }
+android {
+    ...
+}
 
-    dependencies {
-        if (rootProject.ext.debug) {
-            compile project(':base')
-        } else {
-            embedded project(':base')
-        }
-        ...
+dependencies {
+    if (rootProject.ext.debug) {
+        compile project(':base')
+    } else {
+        embedded project(':base')
     }
+    ...
+}
 ```
 
 3，修改工程下build.gradle脚本添加依赖于:sdk:build的main task
 
 ```XML
-    buildscript {
-        ext {
-            debug = false
-            ...
-        }
+buildscript {
+    ext {
+        debug = false
         ...
     }
     ...
-    task main(dependsOn: ':sdk:build') {
+}
+...
+task main(dependsOn: ':sdk:build') {
 
-    }
+}
 ```
 
 4，执行gradle命令合并aar包
 
 ```XML
-    gradle clean main
+gradle clean main
 ```
 
 5，命令执行成功后，将sdk/build/outputs/aar/sdk-release.aar文件复制到app/libs目录
 
 ```XML
-    app
-        > build
-            libs
-            sdk-release.aar
-    ...
+app
+    > build
+        libs
+        sdk-release.aar
+...
 ```
 
 6，修改app/build.gradle脚本
 
 ```XML
-    apply plugin: 'com.android.application'
+apply plugin: 'com.android.application'
 
-    android {
-        ...
-        repositories {
-            flatDir {
-                dirs 'libs'
-            }
+android {
+    ...
+    repositories {
+        flatDir {
+            dirs 'libs'
         }
     }
+}
 
-    dependencies {
-        if (rootProject.ext.debug) {
-            compile project(':sdk')
-        } else {
-            compile(name: 'sdk-release', ext: 'aar')
-        }
-        ...
+dependencies {
+    if (rootProject.ext.debug) {
+        compile project(':sdk')
+    } else {
+        compile(name: 'sdk-release', ext: 'aar')
     }
+    ...
+}
 ```
 
 最后，运行app查看结果。没有报错切功能已经集成完成，代表融合成功。
