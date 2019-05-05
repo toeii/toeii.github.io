@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Flutter与Android混合开发之路由通信
-subtitle:    "跨平台是未来的趋势啊..."
+subtitle:    ""
 date:       2019-02-02
 author:     Toeii
 header-img: img/post-bg-2015.jpg
