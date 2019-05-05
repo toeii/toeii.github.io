@@ -25,34 +25,34 @@ Flutter提供 MethodChannel、EventChannel、BasicMessageChannel 三种方式。
 Flutter端代码：
 
 ```java
-    var result = await MethodChannel("com.simple.channelflutterandroid/method", 
-                      StandardMethodCodec())
-                      .invokeMethod("toast", {"msg": msg})
+var result = await MethodChannel("com.simple.channelflutterandroid/method", 
+                    StandardMethodCodec())
+                    .invokeMethod("toast", {"msg": msg})
 ```
 
 Android端代码：
 
 ```java
-    MethodChannel(flutterView, "com.simple.channelflutterandroid/method",
-              StandardMethodCodec.INSTANCE)
-             .setMethodCallHandler { methodCall, result ->
-        when (methodCall.method) {
-             "toast" -> {
-                //调用传来的参数"msg"对应的值
-                val msg = methodCall.argument<String>("msg")
-                //调用本地Toast的方法
-                Toast.makeText(cxt, msg, Toast.LENGTH_SHORT).show()
-                //回调给客户端
-                 result.success("native android toast success")
-             }
-            "other" -> {
-               // ...
-             }
-             else -> {
-               // ...
-             }
-         }
-    }
+MethodChannel(flutterView, "com.simple.channelflutterandroid/method",
+            StandardMethodCodec.INSTANCE)
+            .setMethodCallHandler { methodCall, result ->
+    when (methodCall.method) {
+            "toast" -> {
+            //调用传来的参数"msg"对应的值
+            val msg = methodCall.argument<String>("msg")
+            //调用本地Toast的方法
+            Toast.makeText(cxt, msg, Toast.LENGTH_SHORT).show()
+            //回调给客户端
+                result.success("native android toast success")
+            }
+        "other" -> {
+            // ...
+            }
+            else -> {
+            // ...
+            }
+        }
+}
 ```
 
 #### EventChannel
@@ -61,26 +61,26 @@ Android端代码：
 Flutter端代码：
 
 ```java
-    EventChannel("com.simple.channelflutterandroid/event")
-            .receiveBroadcastStream()
-            .listen((event){
-                    print("It is Flutter -  receiveBroadcastStream $event");
-    })
+EventChannel("com.simple.channelflutterandroid/event")
+        .receiveBroadcastStream()
+        .listen((event){
+                print("It is Flutter -  receiveBroadcastStream $event");
+})
 ```
 
 Android端代码：
 
 ```java
-    EventChannel(flutterView, "com.simple.channelflutterandroid/event")
-         .setStreamHandler(object : EventChannel.StreamHandler {
-               override fun onListen(o: Any?, eventSink: EventChannel.EventSink) {
-                     eventSink.success("我是发送Native的消息")
-               }
+EventChannel(flutterView, "com.simple.channelflutterandroid/event")
+        .setStreamHandler(object : EventChannel.StreamHandler {
+            override fun onListen(o: Any?, eventSink: EventChannel.EventSink) {
+                    eventSink.success("我是发送Native的消息")
+            }
 
-               override fun onCancel(o: Any?) {
-                       // ...
-               }
-    })
+            override fun onCancel(o: Any?) {
+                    // ...
+            }
+})
 ```
 
 #### BasicMessageChannel
@@ -92,12 +92,12 @@ Flutter端
 
 ```java
 _basicMessageChannel = BasicMessageChannel("com.simple.channelflutterandroid/basic", 
-stringCodec())
-// 发送消息
-_basicMessageChannel.send("我是Flutter发送的消息");
-// 接收消息
-_basicMessageChannel.setMessageHandler((str){
-    print("It is Flutter -  receive str");
+    stringCodec())
+    // 发送消息
+    _basicMessageChannel.send("我是Flutter发送的消息");
+    // 接收消息
+    _basicMessageChannel.setMessageHandler((str){
+        print("It is Flutter -  receive str");
 });
 ```
 
