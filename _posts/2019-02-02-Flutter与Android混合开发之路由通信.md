@@ -16,11 +16,11 @@ tags:
 ## 正文
 Flutter提供 MethodChannel、EventChannel、BasicMessageChannel 三种方式。
 
-    1，类似注册监听，发送的模式 原则
-    2，使用顺序：先注册，后发送，否则接收不到。尤其使用 MethodChannel、EventChannel 不符合该原则会抛出异常，BasicMessageChannel方式只是收不到消息
+1，类似注册监听，发送的模式 原则
+2，使用顺序：先注册，后发送，否则接收不到。尤其使用 MethodChannel、EventChannel 不符合该原则会抛出异常，BasicMessageChannel方式只是收不到消息
 
 #### MethodChannel
-    应用场景：Flutter端 调用 Native端
+应用场景：Flutter端 调用 Native端
 
 Flutter端代码：
 
@@ -56,7 +56,7 @@ Android端代码：
 ```
 
 #### EventChannel
-    应用场景：Native端 调用 Flutter端
+应用场景：Native端 调用 Flutter端
 
 Flutter端代码：
 
@@ -84,8 +84,8 @@ Android端代码：
 ```
 
 #### BasicMessageChannel
-    应用场景：互相调用
-    两种使用方式，创建方式和格式不一样
+应用场景：互相调用
+两种使用方式，创建方式和格式不一样
 
 ##### 第一种
 Flutter端
@@ -114,7 +114,7 @@ basicMessageChannel.setMessageHandler { o, reply ->
 }
 ```
 
-    其中StringCodec()，四种方式可选
+其中StringCodec()，四种方式可选
 
 ##### 第二种
 
