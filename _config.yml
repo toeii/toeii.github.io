@@ -92,19 +92,15 @@ service-worker: true
 # Friends
 friends: [
     {
-       title: "Hackbuteer F3",
+       title: "F3学习小组",
         href: "https://github.com/HackbuteerF3"
     },{
-        title: "Flutter",
-        href: "https://flutter.dev/"
+        title: "GitHuber中国",
+        href: "https://china-githuber.github.io/"
     },
     {
-        title: "Android",
-        href: "https://developer.android.google.cn/index.html"
-    },
-    {
-        title: "Golang",
-        href: "https://golang.google.cn/"
+        title: "B3log开源",
+        href: "https://github.com/b3log"
     },
 ]
 
