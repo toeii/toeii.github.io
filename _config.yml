@@ -92,15 +92,16 @@ service-worker: true
 # Friends
 friends: [
     {
-       title: "F3学习小组",
-        href: "https://github.com/HackbuteerF3"
-    },{
         title: "GitHuber中国",
         href: "https://china-githuber.github.io/"
     },
     {
         title: "B3log开源",
         href: "https://github.com/b3log"
+    }, 
+    {
+       title: "F3学习小组",
+        href: "https://github.com/HackbuteerF3"
     },
 ]
 
