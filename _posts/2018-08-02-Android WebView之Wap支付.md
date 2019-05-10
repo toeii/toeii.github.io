@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Android WebView之Wap支付
-subtitle:    "前些时间公司有个聚合支付SDK，顺带分享一下其中的知识点"
+subtitle:    ""
 date:       2018-08-02
 author:     Toeii
 header-img: img/post-bg-2015.jpg
