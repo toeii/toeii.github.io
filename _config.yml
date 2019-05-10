@@ -96,11 +96,19 @@ friends: [
         href: "https://china-githuber.github.io/"
     },
     {
-        title: "B3log开源",
+        title: "Doocs开源小组",
+        href: "https://github.com/doocs"
+    },
+    {
+        title: "Konfire开源小组",
+        href: "https://github.com/Konfire"
+    },
+    {
+        title: "B3log开源社区",
         href: "https://github.com/b3log"
     }, 
     {
-       title: "F3学习小组",
+        title: "F3学习小组",
         href: "https://github.com/HackbuteerF3"
     },
 ]
