@@ -304,5 +304,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 
-部分内容摘自：https://juejin.im/post/5bc5a56a5188255c352d88fe
+
+
+部分内容摘自：[__white的掘金文章](https://juejin.im/post/5bc5a56a5188255c352d88fe)
 
