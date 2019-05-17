@@ -11,64 +11,14 @@ tags:
 ---
 
 ## 前言
-之前尝试使用[屏幕自适应方案](https://blog.seosiwei.com/detail/46)做了屏幕适配，结果不太理想，于是改用了目前最多人使用的[flutter_screenutil](https://github.com/OpenFlutter/flutter_screenutil)，使用之后结果大好，在平板设备中也能完美兼容，故在此记录分享一下。
+利用[flutter_screenutil](https://github.com/OpenFlutter/flutter_screenutil)是目前Flutter屏幕适配用得最多得一种，其实原理也很简单。
 
-## 适配原理:
-说一下适配方案, 比如我们设计师设计的UI是根据Iphone6来做的,我们知道 iPhone6的分辨率是750 * 1334(px),
-又或者是根据hdpi的设备来设计的UI,我们知道hdpi的 Android设备是 (240 dpi),像素密度是1.5,即hdpi设备的分辨率宽度是320px, 总之,无论设计稿的单位是px,或者是dp,我们都能够转换成px。
-那么我们如果根据px来适配,ios和 android 就都可以兼容了。
-假设,我们的设计稿手机是1080 * 1920 px。
-设计稿上有一个540 * 960 的组件, 即宽度和宽度是手机的一半. 如果我们直接写的时候组件的尺寸这么定义,在其他尺寸的设备上未必是一半,或多,或少。但是我们可以按比例来看,即我们要实现的宽度是实际设备的一半。
-那么假设我们设备的宽度是deviceWidth和deviceHeight , 我们要写的组件大小为: 宽:(540/1080)*deviceWidth,高度: (960/1920) * deviceHeight。
-通过这个公式我们可以发现,我们要写的组件宽度就是设计稿上的尺寸width * (deviceWdith/原型设备宽度).那么每次我们写ui的时候,只要直接拿设计稿的尺寸 * (deviceWdith/设备原型)宽度即可。
-
-原理就是先获取,实际设备与原型设备的尺寸比例。
-
-首先flutter获取设备的尺寸的代码是:
-```java
-import 'dart:ui';
-//因为window是dart:ui中提供的,所以需要引入这个包.
-window.physicalSize  //Size(1080.0, 1794.0)  单位px
-width =  window.physicalSize.width  //宽度
-height =  window.physicalSize.height  //高度
-
-//使用这个方法则无需引入包
-MediaQuery.of(context).size   //Size(411.4, 683.4)   单位:dp
-widhtDp = MediaQuery.of(context).size.width   //宽度 411.4
-heightDp = MediaQuery.of(context).size.height  //高度 683.4
-```
-
-设计稿单位是px,且尺寸为1080*1920 px 时:
-```java
-scaleWidth = width  / 1080;
-scaleHeight = height / 1920;
-```
-
-那么我们要写尺寸为500100控件的宽度就是 500scaleWidth .100*scaleHeigh ,注意这时单位是px,flutter中默认组件尺寸单位都是dp,我们还要进行px->dp的操作.除以像素密度就好了.
-flutter获取像素密度的方法:
-```java
-MediaQuery.of(context).devicePixelRatio
-window.physicalSize 
-```
-上面两种方法得到的是一样的结果,但是window对象来自dart:ui,所以我们引入这个包:
-```java
-import 'dart:ui';
-```
-设计稿单位是dp,且尺寸为360*640 dp 时:
-```java
-scaleWidth = widhtDp / 360;
-scaleHeight = heightDp / 640;
-那么我们要写尺寸为500*100控件的宽度就是 500*scaleWidth .100*scaleHeigh 
-```
-
-### 字体大小适配
-```java
-setSp(int fontSize, [allowFontScaling = true]) => allowFontScaling
-      ? setWidth(fontSize) * _textScaleFactor
-      : setWidth(fontSize);
-```
-第一个参数为设计稿中字体的大小，单位px， 第二个参数可选，为控制字体是否要根据系统的“字体大小”辅助选项来进行缩放。默认值为true。
-
+比如我们设计师设计的UI是根据iPhone6来做的，我们知道 iPhone6的分辨率是750 * 1334(px)，
+又或者是根据hdpi的设备来设计的UI，我们知道hdpi的 Android设备是 (240 dpi),像素密度是1.5，即hdpi设备的分辨率宽度是320px，总之，无论设计稿的单位是px，或者是dp，我们都能够转换成px。
+那么我们如果根据px来适配，ios和 android 就都可以兼容了。
+假设，我们的设计稿手机是1080 * 1920 px，设计稿上有一个540 * 960 的组件，即宽度和宽度是手机的一半。如果我们直接写的时候组件的尺寸这么定义，在其他尺寸的设备上未必是一半，或多，或少。但是我们可以按比例来看，即我们要实现的宽度是实际设备的一半。
+那么假设我们设备的宽度是deviceWidth和deviceHeight，我们要写的组件大小为: 宽:(540/1080) * deviceWidth，高度: (960/1920) * deviceHeight。
+通过这个公式我们可以发现，我们要写的组件宽度就是设计稿上的尺寸width * (deviceWdith/原型设备宽度)。那么每次我们写ui的时候，只要直接拿设计稿的尺寸 * (deviceWdith/设备原型)宽度即可。
 
 
 ## 使用方法:
