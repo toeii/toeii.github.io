@@ -1,7 +1,7 @@
 # Site settings
 title: Toeii's Blog
 SEOTitle: Toeii的个人博客
-header-img: img/post-bg-desk.jpg
+header-img: img/home-bg-o.jpg
 email: toeii.dyy@gmail.com
 description: ""
 keyword: "Toeii, Toeii Blog, Toeii的博客, Toeii, Web, Android, Kotlin, Flutter"
@@ -21,10 +21,10 @@ RSS: false
 # weibo_username:     toeii
 linkedin_username:     toeii
 gitee_username:     toeii
-zhihu_username:     toeii
+# zhihu_username:     toeii
 github_username:    toeii
 facebook_username:  TOE1I
-jianshu_username:   954316e599d3
+# jianshu_username:   954316e599d3
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
