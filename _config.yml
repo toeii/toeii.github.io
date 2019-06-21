@@ -21,9 +21,9 @@ RSS: false
 # weibo_username:     toeii
 linkedin_username:     toeii
 gitee_username:     toeii
-# zhihu_username:     toeii
 github_username:    toeii
-facebook_username:  TOE1I
+zhihu_username:     toeii
+# facebook_username:  TOE1I
 # jianshu_username:   954316e599d3
 
 # Build settings
@@ -66,7 +66,6 @@ gitalk:
   owner: toeii    #github用户名
   admin: toeii
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
-  id: 'window.location.pathname'
 
 # 统计
 
