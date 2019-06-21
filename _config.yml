@@ -19,6 +19,7 @@ sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's us
 # SNS settings
 RSS: false
 # weibo_username:     toeii
+gitee_username:     toeii
 zhihu_username:     toeii
 github_username:    toeii
 facebook_username:  TOE1I
@@ -58,13 +59,13 @@ kramdown:
 # Gitalk
 gitalk:
   enable: true    #是否开启Gitalk评论
-  clientID: 4c9cf89dd7c7723df370                            #生成的clientID
-  clientSecret: 65bf473bdd94d39e55854a296f97df412a4dcf94    #生成的clientSecret
+  clientID: f3ed136bc8f3b1f7c7c6                            #生成的clientID
+  clientSecret: b9edd290545540c8b9162d8135acd740eaef8ef8    #生成的clientSecret
   repo: toeii.github.io    #仓库名称
   owner: toeii    #github用户名
   admin: toeii
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
-
+  id: 'window.location.pathname'
 
 # 统计
 
