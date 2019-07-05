@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Flutter屏幕适配方案之flutter_ScreenUtil
+title:      Flutter屏幕适配方案之Flutter_ScreenUtil
 subtitle:    ""
 date:       2019-05-16
 author:     Toeii
