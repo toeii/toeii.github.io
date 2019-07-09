@@ -13,7 +13,7 @@ tags:
 
 ## 前言
 
-Android Jetpack是Google目前力推的Android开发架构方案。Jetpack是包含一系列组件的库，它的作用主要是为了填补之前Android中自带的一些缺陷，例如Handler的内存泄露、Camera的不易用性、后台调度难以管理等等。所以，我也跟随Google的脚步，一点点进入对Jetpack的学习使用，在此记录分享。
+Android Jetpack是Google目前力推的Android开发组件库，它的作用主要是为了填补之前Android中自带的一些缺陷，例如Handler的内存泄露、Camera的不易用性、后台调度难以管理等等。所以，我也跟随Google的脚步，一点点进入对Jetpack的学习使用，在此记录分享。
 
 ## 开始配置
 
