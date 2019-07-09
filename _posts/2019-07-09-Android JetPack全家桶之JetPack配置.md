@@ -21,18 +21,18 @@ Android Jetpack是Google目前力推的Android开发架构方案。Jetpack是包
 
 打开你的项目的 build.gradle 文件并添加 google() 代码库，如下所示：
 
-'''xml
+```XML
     allprojects {
         repositories {
             **google()**
             jcenter()
         }
     }
-'''
+```
 
 然后配置App.Gradle：
 
-'''xml
+```XML
     dependencies {
         def lifecycle_version = "2.0.0"
         implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
@@ -40,7 +40,7 @@ Android Jetpack是Google目前力推的Android开发架构方案。Jetpack是包
         implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
         ...
     }
-'''
+```
 
 ## 总结
 
