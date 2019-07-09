@@ -1,27 +1,26 @@
 ---
 layout:     post
-title:      Flutter状态管理之Flutter_Provide
+title:      Android JetPack全家桶之Lifecycle生命周期感知
 subtitle:    ""
-date:       2019-06-25
+date:       2019-07-09
 author:     Toeii
 header-img: img/post-bg-2015.jpg
 catalog: true
 tags:
-    - Flutter
+    - Android
 ---
-
 
 
 ## 前言
 
 
-## 思考
+## 介绍
 
 
-## 集成过程
+## 使用
 
 
-## 总结 
+## 总结
 
 
 
