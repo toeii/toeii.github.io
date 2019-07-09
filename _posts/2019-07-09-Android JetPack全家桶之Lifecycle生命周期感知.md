@@ -22,8 +22,9 @@ Jetpack全家桶我打算从外至内的学习，所以本篇也主要介绍的�
 Lifecycle组件主要是在Jetpack体系中起到粘接的作用，感知页面(Activity/Fragment)生命周期，调整活动。其原理其实是利用观察者模式，注册订阅、分发消费。
 
 Lifecycle使用两个主要枚举来跟踪其关联组件的生命周期状态：
-Event：从框架和Lifecycle类调度的生命周期事件，这些事件映射到活动和片段中的回调事件。
-State：跟踪的Lifecycle组件的当前状态。
+
+  Event：从框架和Lifecycle类调度的生命周期事件，这些事件映射到活动和片段中的回调事件。
+  State：跟踪的Lifecycle组件的当前状态。
 
 ![图片介绍](/img/toeii/icon_android_lifecycle_states.png)
     
