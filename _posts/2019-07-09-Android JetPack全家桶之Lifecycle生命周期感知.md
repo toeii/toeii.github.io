@@ -23,9 +23,13 @@ Lifecycle组件主要是在Jetpack体系中起到粘接的作用，感知页面(
 
 Lifecycle使用两个主要枚举来跟踪其关联组件的生命周期状态：
 
-    Event：从框架和Lifecycle类调度的生命周期事件，这些事件映射到活动和片段中的回调事件。
+#### Event
 
-    State：跟踪的Lifecycle组件的当前状态。
+    从框架和Lifecycle类调度的生命周期事件，这些事件映射到活动和片段中的回调事件。
+
+#### State
+
+    跟踪的Lifecycle组件的当前状态。
 
 ![图片介绍](/img/toeii/icon_android_lifecycle_states.png)
     
