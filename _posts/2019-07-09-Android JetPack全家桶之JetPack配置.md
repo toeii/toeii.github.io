@@ -24,7 +24,7 @@ Android Jetpack是Google目前力推的Android开发架构方案。Jetpack是包
 ```XML
 allprojects {
     repositories {
-        <b>google()</b>
+        google()
         jcenter()
     }
 }
