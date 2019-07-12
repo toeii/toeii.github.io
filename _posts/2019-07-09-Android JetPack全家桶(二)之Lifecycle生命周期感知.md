@@ -15,6 +15,8 @@ tags:
 
 Jetpack全家桶我打算从外至内的学习，所以本篇也主要介绍的是Lifecycle组件。
 
+在开始学习之前，你可以看看如何[配置](https://toeii.github.io/2019/07/09/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E4%B8%80)%E4%B9%8BJetPack%E9%85%8D%E7%BD%AE/)JetPack。
+
 ## 介绍
 
 ### Lifecycle介绍
