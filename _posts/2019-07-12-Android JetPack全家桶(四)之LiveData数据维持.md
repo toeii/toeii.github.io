@@ -20,7 +20,33 @@ tags:
 LiveData与常规Observable不同，LiveData是具有生命周期感知的。它在生命周期中扮演观察者的角色，监听生命周期。
 
 官方说，生命周期处于onStart()或onResume状态，则LiveData会将其视为处于活跃状态。
-但是根据源码来看，LiveData的活跃状态其实是在onStart()之后和onPause()之前的，在这一期间LiveData可以对活动观察者进行数据更新。
+但是根据源码来看，LiveData的活跃状态其实是在onPause()和onStart()前后的，在这一期间LiveData可以对活动观察者进行数据更新。
+
+
+```java
+
+class LifecycleBoundObserver extends ObserverWrapper implements GenericLifecycleObserver {
+
+    ...
+
+    @Override
+    boolean shouldBeActive() {
+        return mOwner.getLifecycle().getCurrentState().isAtLeast(STARTED); //onStart开始为活跃状态
+    }
+
+}
+
+private void considerNotify(ObserverWrapper observer) {
+    
+    if (!observer.shouldBeActive()) {//判断是否为活跃状态
+        observer.activeStateChanged(false);
+        return;
+    }
+
+    observer.mObserver.onChanged((T) mData);
+}
+
+```
 
 通常我们实现LifecycleOwner接口的对象配对的观察者，之后生命周期在onDestroy()时通过LiveData.observer()调用LifecycleBoundObserver中的removeObserver()回收资源，避免内存泄漏。
 
