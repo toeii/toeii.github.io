@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Android JetPack全家桶之Lifecycle生命周期感知
+title:      Android JetPack全家桶(二)之Lifecycle生命周期感知
 subtitle:    ""
 date:       2019-07-09
 author:     Toeii
@@ -33,61 +33,7 @@ Lifecycle使用两个主要枚举来跟踪其关联组件的生命周期状态�
 
 在平时的开发过程中，我们难免有些逻辑的执行是和UI的生命周期相结合的，需要在特定的生命周期中执行相应的方法，我们平时做的可能就是在View中的每个周期调用Presenter中获取数据的方法，然后在调用View的回调接口更新UI，但现在使用Lifecycle可以使用注解和观察的模式自动调用Observe中定义好的方法。
 
-```java
-
-class AppLifecycleListener : LifecycleObserver {
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_START)
-    public fun connectOnStart(){
-        System.out.println("lifecycleOnStart================")
-    }
-    
-}
-
-```
-
-```java
-
-class MyActivity : Activity(), LifecycleOwner {
-
-    private lateinit var lifecycleRegistry: LifecycleRegistry
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        lifecycleRegistry = LifecycleRegistry(this)
-        lifecycleRegistry.markState(Lifecycle.State.CREATED)
-    }
-
-    public override fun onStart() {
-        super.onStart()
-        lifecycleRegistry.markState(Lifecycle.State.STARTED)
-    }
-
-    override fun getLifecycle(): Lifecycle {
-        return lifecycleRegistry
-    }
-}
-
-```
-
-
-### Lifecycle分析
-
-#### LifecycleObserver
-
-LifecycleObserver是一个接口类用于Observer的扩展。它还有两个间接的子类，DefaultLifecycleObserver和LifecycleEventObserver。从间接子类的实现可以看出来，它是将类标记为LifecycleObserver，它没有任何方法，而是依赖于OnLifecycleEvent带注释的方法。
-
-#### LifecycleOwner和ProcessLifecycleOwner
-
-LifecycleOwner是一个单一方法接口，表示该类具有生命周期，它只有一个方法getLifecycle（）。它主要用于独立的Activity/Fragment感知场景，Lifecycle.Event将跟随UI调度。
-而ProcessLifecycleOwner是LifecycleOwner接口的扩展类，它可以将LifecycleOwner视为所有活动的组合，用于整个应用的生命周期感知。所以Lifecycle.Event.ON_CREATE将调度一次并且Lifecycle.Event.ON_DESTROY永远不会被调度。
-
-#### LifecycleRegistry
-
-LifecycleRegistry继承自Lifecycle，它可以处理单个Lifecycle对应多个观察者的关系。它可以注册和注销Observer，并且分发和消费Lifecycle.Event。
-
-## 使用
+## 如何使用？
 
 ### 创建Observer
 
@@ -187,6 +133,21 @@ class App : Application(){
 }
 
 ```
+
+## 分析Lifecycle
+
+#### LifecycleObserver
+
+LifecycleObserver是一个接口类用于Observer的扩展。它还有两个间接的子类，DefaultLifecycleObserver和LifecycleEventObserver。从间接子类的实现可以看出来，它是将类标记为LifecycleObserver，它没有任何方法，而是依赖于OnLifecycleEvent带注释的方法。
+
+#### LifecycleOwner和ProcessLifecycleOwner
+
+LifecycleOwner是一个单一方法接口，表示该类具有生命周期，它只有一个方法getLifecycle（）。它主要用于独立的Activity/Fragment感知场景，Lifecycle.Event将跟随UI调度。
+而ProcessLifecycleOwner是LifecycleOwner接口的扩展类，它可以将LifecycleOwner视为所有活动的组合，用于整个应用的生命周期感知。所以Lifecycle.Event.ON_CREATE将调度一次并且Lifecycle.Event.ON_DESTROY永远不会被调度。
+
+#### LifecycleRegistry
+
+LifecycleRegistry继承自Lifecycle，它可以处理单个Lifecycle对应多个观察者的关系。它可以注册和注销Observer，并且分发和消费Lifecycle.Event。
 
 ## 结语
 

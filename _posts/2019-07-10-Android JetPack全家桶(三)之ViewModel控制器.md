@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Android JetPack全家桶之ViewModel控制器
+title:      Android JetPack全家桶(三)之ViewModel控制器
 subtitle:    ""
 date:       2019-07-10
 author:     Toeii
@@ -25,30 +25,7 @@ ViewModel的出现是为了解决数据因Android UI控制器在生命周期活�
 诸如活动和片段之类的UI控制器主要用于显示UI数据，对用户操作作出反应或处理操作系统通信，例如许可请求。要求UI控制器也负责从数据库或网络加载数据，这会给类增加膨胀。为UI控制器分配过多的责任可能导致单个类尝试自己处理应用程序的所有工作，而不是将工作委托给其他类。以这种方式为UI控制器分配过多的责任也会使测试变得更加困难。
 而ViewModel将视图数据所有权与UI控制器逻辑分离起来更容易，更有效的解决这一系列问题。
 
-
-## ViewModel生命周期
-
-![图片介绍](/img/toeii/icon_android_viewmodel_lifecycle.png)
-
-获取ViewModel时，ViewModel对象的范围限定为传递给ViewModelProvider的生命周期。
-ViewModel保留在内存中，直到它的作用域生命周期永久消失：在活动的情况下，当它完成时，在片段的情况下，当它被分离时。
-图中显示了活动经历轮换然后结束时的各种生命周期状态。该图还显示了关联活动生命周期旁边的ViewModel的生命周期。
-此特定图表说明了活动的状态。相同的基本状态适用于片段的生命周期。
-
-通常在系统第一次调用活动对象的onCreate()方法时请求ViewModel。
-系统可以在活动的整个生命周期中多次调用onCreate()，例如在旋转设备屏幕时。
-而ViewModel从第一次请求ViewModel到活动完成并销毁之时就存在。
-
-## ViewModel加载原理
-
-ViewModel将UI控制器与数据加载操作分开，这意味着类之间的强引用较少，ViewModel内部是与Room和LiveData一起使用以达到替换加载的效果。
-当数据发生变化时，Room存储层会通知到LiveData，然后LiveData会使用修改后的数据更新UI，这样确保数据在设备配置更改后仍然存在。
-
-关于LiveData，它是一个数据存储类，底层由Map实现。下篇文章会讲到，这里略知一二即可。
-
-关于Room，它是一个ORM库。后续文章会讲到，这里略知一二即可。
-
-## 示例
+## 如何使用？
 
 ```java
 
@@ -86,6 +63,30 @@ class MainActivity : AppCompatActivity() {
 }
 
 ```
+
+## 分析ViewModel
+
+### ViewModel生命周期
+
+![图片介绍](/img/toeii/icon_android_viewmodel_lifecycle.png)
+
+获取ViewModel时，ViewModel对象的范围限定为传递给ViewModelProvider的生命周期。
+ViewModel保留在内存中，直到它的作用域生命周期永久消失：在活动的情况下，当它完成时，在片段的情况下，当它被分离时。
+图中显示了活动经历轮换然后结束时的各种生命周期状态。该图还显示了关联活动生命周期旁边的ViewModel的生命周期。
+此特定图表说明了活动的状态。相同的基本状态适用于片段的生命周期。
+
+通常在系统第一次调用活动对象的onCreate()方法时请求ViewModel。
+系统可以在活动的整个生命周期中多次调用onCreate()，例如在旋转设备屏幕时。
+而ViewModel从第一次请求ViewModel到活动完成并销毁之时就存在。
+
+### ViewModel加载原理
+
+ViewModel将UI控制器与数据加载操作分开，这意味着类之间的强引用较少，ViewModel内部是与Room和LiveData一起使用以达到替换加载的效果。
+当数据发生变化时，Room存储层会通知到LiveData，然后LiveData会使用修改后的数据更新UI，这样确保数据在设备配置更改后仍然存在。
+
+关于LiveData，它是一个数据存储类，底层由Map实现。下篇文章会讲到，这里略知一二即可。
+
+关于Room，它是一个ORM库。后续文章会讲到，这里略知一二即可。
 
 
 ## 结语

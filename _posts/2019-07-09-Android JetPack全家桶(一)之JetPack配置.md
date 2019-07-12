@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Android JetPack全家桶之JetPack配置
+title:      Android JetPack全家桶(一)之JetPack配置
 subtitle:    "入门配置"
 date:       2019-07-09
 author:     Toeii
