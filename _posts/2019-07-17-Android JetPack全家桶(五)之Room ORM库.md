@@ -198,7 +198,7 @@ doAsync {
 
 如图所示：
 
-![图片介绍](/img/toeii/android_jetpack_room_architecture.png.png)
+![图片介绍](/img/toeii/android_jetpack_room_architecture.png)
 
 Room有3个主要部分：
 
