@@ -13,6 +13,8 @@ tags:
 
 ## 前言
 
+接着[上篇](https://toeii.github.io/2019/07/12/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E5%9B%9B)%E4%B9%8BLiveData%E6%95%B0%E6%8D%AE%E7%BB%B4%E6%8C%81/)
+
 平时在日常开发中，ORM库用得比较多的是GreenDao、LitePal、Realm等优秀的开源库，但是它们都是第三方的。而如今Google自己推出了一款ORM库，也就是本篇要介绍的Room。毕竟是亲儿子，我们作为Android开发者找不到不去学习它的理由。接下来我们一起来看看吧。
 
 （Tips：ORM是建立关系对象映射，也就是我们常用到的数据持久）

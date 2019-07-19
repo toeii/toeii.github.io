@@ -13,7 +13,7 @@ tags:
 
 ## 前言
 
-接着[上篇](https://toeii.github.io/2019/07/10/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6%E4%B9%8BViewModel%E6%8E%A7%E5%88%B6%E5%99%A8/)，我们来学习一下LiveData数据维持类。
+接着[上篇](https://toeii.github.io/2019/07/10/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E4%B8%89)%E4%B9%8BViewModel%E6%8E%A7%E5%88%B6%E5%99%A8/)，我们来学习一下LiveData数据维持类。
 
 ## 介绍
 
