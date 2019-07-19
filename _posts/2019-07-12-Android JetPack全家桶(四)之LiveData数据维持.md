@@ -54,7 +54,7 @@ private void considerNotify(ObserverWrapper observer) {
 
 ## 如何使用？
 
-添加依赖
+#### 添加依赖
 
 ```java
 
@@ -65,6 +65,8 @@ annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
 kapt "android.arch.lifecycle:compiler:$lifecycle_version"
 
 ```
+
+#### 监听LiveData数据
 
 ```java
 
@@ -103,9 +105,9 @@ class MainActivity : AppCompatActivity() {
 
 ## 分析LiveData
 
-### 数据更新
+#### 数据更新
 
-#### LiveData.setValue
+##### LiveData.setValue
 
 LiveData的setValue()方法只能在主线程中调用。
 
@@ -121,7 +123,7 @@ protected void setValue(T value) {
 
 ```
 
-#### LiveData.postValue
+##### LiveData.postValue
 
 LiveData的postValue()方法则只能在子线程中调用，这种做法是为了区分调用场景。
 
@@ -141,7 +143,7 @@ protected void postValue(T value) {
 
 ```
 
-### 资源回收
+#### 资源回收
 LiveData在注册observer的时候，会绑定当前的Lifecycle，注册LifecycleOwner接口并实例LifecycleBoundObserver对象。
 
 ```java

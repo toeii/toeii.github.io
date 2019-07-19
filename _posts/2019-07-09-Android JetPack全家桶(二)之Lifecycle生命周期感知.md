@@ -37,9 +37,7 @@ Lifecycle使用两个主要枚举来跟踪其关联组件的生命周期状态�
 
 ## 如何使用？
 
-### 创建Observer
-
-添加依赖
+#### 添加依赖
 
 ```java
 
@@ -50,6 +48,8 @@ annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
 kapt "android.arch.lifecycle:compiler:$lifecycle_version"
 
 ```
+
+#### 创建Observer
 
 ```java
 
@@ -91,9 +91,9 @@ class AppLifecycleListener : LifecycleObserver {
 
 ```
 
-### 绑定Observer
+#### 绑定Observer
 
-#### 针对单页面场景
+##### 针对单页面场景
 
 ```java
 
@@ -128,7 +128,7 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
 ```
 
-#### 针对全局应用场景
+##### 针对全局应用场景
 
 ```java
 

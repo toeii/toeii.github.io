@@ -27,7 +27,7 @@ ViewModel的出现是为了解决数据因Android UI控制器在生命周期活�
 
 ## 如何使用？
 
-添加依赖
+#### 添加依赖
 
 ```java
 
@@ -38,6 +38,8 @@ annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
 kapt "android.arch.lifecycle:compiler:$lifecycle_version"
 
 ```
+
+#### 构建ViewModel
 
 ```java
 
@@ -78,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
 ## 分析ViewModel
 
-### ViewModel生命周期
+#### ViewModel生命周期
 
 ![图片介绍](/img/toeii/icon_android_viewmodel_lifecycle.png)
 
@@ -91,7 +93,7 @@ ViewModel保留在内存中，直到它的作用域生命周期永久消失：�
 系统可以在活动的整个生命周期中多次调用onCreate()，例如在旋转设备屏幕时。
 而ViewModel从第一次请求ViewModel到活动完成并销毁之时就存在。
 
-### ViewModel加载原理
+#### ViewModel加载原理
 
 ViewModel将UI控制器与数据加载操作分开，这意味着类之间的强引用较少，ViewModel内部是与Room和LiveData一起使用以达到替换加载的效果。
 当数据发生变化时，Room存储层会通知到LiveData，然后LiveData会使用修改后的数据更新UI，这样确保数据在设备配置更改后仍然存在。
