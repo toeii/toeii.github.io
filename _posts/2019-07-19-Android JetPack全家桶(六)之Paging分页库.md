@@ -13,7 +13,7 @@ tags:
 
 ## 前言
 
-在之前的文章中学习了[Lifecycle](https://toeii.github.io/2019/07/09/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6%E4%B9%8BLifecycle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%84%9F%E7%9F%A5/)、[ViewModel](https://toeii.github.io/2019/07/10/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6%E4%B9%8BViewModel%E6%8E%A7%E5%88%B6%E5%99%A8/)、[LiveData](https://toeii.github.io/2019/07/12/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E5%9B%9B)%E4%B9%8BLiveData%E6%95%B0%E6%8D%AE%E7%BB%B4%E6%8C%81/)、[Room](https://toeii.github.io/2019/07/17/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E4%BA%94)%E4%B9%8BRoom-ORM%E5%BA%93/)的用法，那么这次将结合Paging使用。
+在之前的文章中学习了[Lifecycle](https://toeii.github.io/2019/07/09/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E4%BA%8C)%E4%B9%8BLifecycle%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%84%9F%E7%9F%A5/)、[ViewModel](https://toeii.github.io/2019/07/10/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E4%B8%89)%E4%B9%8BViewModel%E6%8E%A7%E5%88%B6%E5%99%A8/)、[LiveData](https://toeii.github.io/2019/07/12/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E5%9B%9B)%E4%B9%8BLiveData%E6%95%B0%E6%8D%AE%E7%BB%B4%E6%8C%81/)、[Room](https://toeii.github.io/2019/07/17/Android-JetPack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E4%BA%94)%E4%B9%8BRoom-ORM%E5%BA%93/)的用法，那么这次将结合Paging使用。
 
 ## 介绍
 
@@ -173,7 +173,7 @@ interface BookDao {
 
 ```
 
-#### 利用ViewModel构建LiveData<PagedList>
+#### 4，利用ViewModel构建LiveData<PagedList>
 
 ```java
 
@@ -214,7 +214,7 @@ class BookViewModel(app: Application): AndroidViewModel(app) {
 
 ```
 
-#### 创建PagedListAdapter
+#### 5，创建PagedListAdapter
 
 ```java
 
@@ -254,7 +254,7 @@ class BookAdapter(private var context: Context): PagedListAdapter<BookBean,Recyc
 
 ```
 
-#### 结合LifecycleOwner设置UI监听与更新
+#### 6，结合LifecycleOwner设置UI监听与更新
 
 ```java
 
