@@ -27,6 +27,18 @@ ViewModel的出现是为了解决数据因Android UI控制器在生命周期活�
 
 ## 如何使用？
 
+添加依赖
+
+```java
+
+// lifecycle
+def lifecycle_version = "2.2.0-alpha02"
+implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+kapt "android.arch.lifecycle:compiler:$lifecycle_version"
+
+```
+
 ```java
 
 class BaseModel: ViewModel() {

@@ -84,30 +84,26 @@ class CustomPageDataSource(private val bookRepository: BookRepository) : PageKey
 
 ```java
 
-    // room
-    def room_version = '2.2.0-alpha01'
-    implementation "androidx.room:room-runtime:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
-    kapt "android.arch.persistence.room:compiler:$room_version"
+// room
+def room_version = '2.2.0-alpha01'
+implementation "androidx.room:room-runtime:$room_version"
+implementation "androidx.room:room-ktx:$room_version"
+kapt "androidx.room:room-compiler:$room_version"
+annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+kapt "android.arch.persistence.room:compiler:$room_version"
 
-    // anko
-    def anko_version = '0.10.8'
-    implementation "org.jetbrains.anko:anko:$anko_version"
+// paging
+def paging_version = "2.1.0"
+def paging_rxjava_version = "1.0.1"
+implementation "android.arch.paging:runtime:$paging_version"
+implementation "androidx.paging:paging-runtime-ktx:$paging_version"
+implementation "android.arch.paging:rxjava2:$paging_rxjava_version"
 
-    // paging
-    def paging_version = "2.1.0"
-    def paging_rxjava_version = "1.0.1"
-    implementation "android.arch.paging:runtime:$paging_version"
-    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-    implementation "android.arch.paging:rxjava2:$paging_rxjava_version"
-
-    // lifecycle
-    def lifecycle_version = "2.2.0-alpha02"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
-    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
-    kapt "android.arch.lifecycle:compiler:$lifecycle_version"
+// lifecycle
+def lifecycle_version = "2.2.0-alpha02"
+implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+kapt "android.arch.lifecycle:compiler:$lifecycle_version"
 
 ```
 

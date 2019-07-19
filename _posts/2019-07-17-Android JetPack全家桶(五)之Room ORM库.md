@@ -23,18 +23,19 @@ Room是基于SQLite实现的，一款具备比较全面的SQLite功能的ORM库�
 
 ## 如何使用？
 
-#### 一，配置ROOM
+#### 一，添加依赖
 
 App.build.gradle
 
 ```java
 
 // room
-def room_version = '2.1.0-alpha06'
+def room_version = '2.2.0-alpha01'
 implementation "androidx.room:room-runtime:$room_version"
 implementation "androidx.room:room-ktx:$room_version"
 kapt "androidx.room:room-compiler:$room_version"
-androidTestImplementation "androidx.room:room-testing:$room_version"
+annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+kapt "android.arch.persistence.room:compiler:$room_version"
 
 ```
 

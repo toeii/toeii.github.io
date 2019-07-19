@@ -39,6 +39,18 @@ Lifecycle使用两个主要枚举来跟踪其关联组件的生命周期状态�
 
 ### 创建Observer
 
+添加依赖
+
+```java
+
+// lifecycle
+def lifecycle_version = "2.2.0-alpha02"
+implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+kapt "android.arch.lifecycle:compiler:$lifecycle_version"
+
+```
+
 ```java
 
 class AppLifecycleListener : LifecycleObserver {
