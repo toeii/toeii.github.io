@@ -92,14 +92,11 @@ service-worker: true
 
 # Friends
 friends: [
+
     {
         title: "GitHuber中国",
         href: "https://china-githuber.github.io/"
-    },
-    {
-        title: "圣殿骑士",
-        href: "https://www.cnblogs.com/KnightsWarrior/"
-    }, 
-    
+    }
+  
 ]
 
