@@ -16,14 +16,17 @@ wap支付实现起来很简单，只需要在WebView做相关处理就行，这�
 ## 创建WebView及其简单配置
 相信你已经了解过下面的webview创建方式：
 ```XML
+
  <LinearLayout
         android:id="@+id/layout_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
          />
+
 ```
 ```java
+
 private LinearLayout webViewLayout;
 private WebView mWebView;
     @Override
@@ -33,9 +36,12 @@ private WebView mWebView;
         mWebView.setLayoutParams(params);
         webViewLayout.addView(mWebView);
     }
+
 ```
-WebView相关配置：
+## WebView相关配置：
+
 ```java
+
  private void initWebSettings() {
         webSettings = mWebView.getSettings();
         webSettings.setLoadWithOverviewMode(true);
@@ -66,11 +72,14 @@ WebView相关配置：
         mWebView.setWebViewClient(new MyWebViewClient());
         mWebView.loadUrl(url);//url:包含H5支付的网页地址
     }
+
 ```
 这是WebView一些基础配置，具体配置需要看具体业务需求。具体WebView优化就不过多介绍了。
 
-WebViewClient配置：
+#### WebViewClient配置：
+
 ```java
+
  class MyWebViewClient extends WebViewClient {
 
         @Override
@@ -114,9 +123,12 @@ WebViewClient配置：
         public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
             handler.proceed();//处理https证书问题}
     }
+
 ```
-当然不能忘了处理WebView的生命周期
+#### 当然不能忘了处理WebView的生命周期
+
 ```java
+
     @Override
     public void onResume() {
         super.onResume();
@@ -167,9 +179,12 @@ WebViewClient配置：
             mWebView = null;
         }
     }
+
 ```
-wap支付核心逻辑
+#### wap支付核心逻辑
+
 ```java
+
     private boolean startPay(String url) {
         try {
             if (url.startsWith("weixin://")) {
@@ -201,9 +216,13 @@ wap支付核心逻辑
             return false;
         }
     }
+
 ```
+
 相信你在其他文章中看到的是这个样子的：
+
 ```java
+
     public boolean parseScheme(String url) {
         if (url.contains("platformapi/startApp"))) {
             return true;
@@ -213,10 +232,11 @@ wap支付核心逻辑
             return false;
         }
     }
+
 ```
 但是前不久支付宝改了wap支付的方式，之前是直接能在APP中调起支付界面的，现在调整为进入支付宝APP才能掉起支付界面，而且相应的URL格式发生变化，从startApp 变为了startapp，为了适应新的变化，只能两个都加上判断了（今后的版本可能还会有其他变化，可以考虑接入热更新保持SDK的稳定）
 
-##总结
+## 总结
 
 wap支付虽然没有什么高深的技术，但是需要一直花费精力去更新维护，保障业务闭环的稳定性。
 
