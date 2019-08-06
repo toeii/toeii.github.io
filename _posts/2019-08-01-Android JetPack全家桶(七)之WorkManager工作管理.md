@@ -141,7 +141,7 @@ class DownloadWork(var context: Context, private var workerParams: WorkerParamet
 
 ```java
 
-        val requestPeriodicWork = PeriodicWorkRequestBuilder<DownloadWork>(60, TimeUnit.SECONDS)//
+        val requestPeriodicWork = PeriodicWorkRequestBuilder<DownloadWork>(60, TimeUnit.SECONDS)
                 .setInputData(data)
                 .setConstraints(myConstraints)
                 .build()
