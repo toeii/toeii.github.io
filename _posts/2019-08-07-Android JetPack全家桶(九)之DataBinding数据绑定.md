@@ -34,9 +34,10 @@ Data Binding，即数据绑定，是Android团队实现MVVM架构的一种方法
 同时，Data Binding也支持双向绑定。
 
 #### 有什么好处
-1，省去大量模板代码，比如findViewById()，setOnClickListener()， setText()，等等。
-2，使得View与逻辑彻底解耦（MVVM）成为可能，不像MVC那样逻辑与View操作混在一起难以维护，也不像MVP那样定义大量接口，费时费力。
-3，由于数据（对象）与View进行双向绑定，所以开发时只需要关注数据（对象）即可，无需关心View的各种繁杂操作（如setVisibility()，setText()等）。
+
+1，省去大量模板代码，比如findViewById()，setOnClickListener()， setText()，等等。<br/>
+2，使得View与逻辑彻底解耦（MVVM）成为可能，不像MVC那样逻辑与View操作混在一起难以维护，也不像MVP那样定义大量接口，费时费力。<br/>
+3，由于数据（对象）与View进行双向绑定，所以开发时只需要关注数据（对象）即可，无需关心View的各种繁杂操作（如setVisibility()，setText()等）。<br/>
 4，功能强大，xml中即可完成简单的逻辑（xml中支持表达式语言，逻辑/数学运算等）。
 
 ## 如何使用？
@@ -105,7 +106,7 @@ gradle.properties
 
 #### 注意事项
 
-* 在绑定页面之前，记得先“Mark project”工程。IDEA会自动根据刚才加入<layout>的xml布局视图生成对应的DataBinding映射类。
+**在绑定页面之前，记得先“Mark project”工程。IDEA会自动根据刚才加入<layout>的xml布局视图生成对应的DataBinding映射类。**
 
 上面我们修改了布局后，下面我们就可以在代码中进行数据绑定了。此时工程中会自动生成该布局对应的java绑定文件:ActivityMainBinding。仔细观察就会发现，这个文件名就是将布局的下划线形式转换成java规范的驼峰形式，后面加上Binding。
 
@@ -123,12 +124,12 @@ gradle.properties
 
 ### 一般数据绑定
 
-#### <data>标签
+#### Data标签
 
 在这个标签中，我们通常用来做下面的事情：
 
-·   定义所绑定的数据的名称（变量名）及对应类型
-·   引入页面所需的类
+1，定义所绑定的数据的名称（变量名）及对应类型；<br/>
+2，引入页面所需的类；
 
 示例如下：
 
@@ -145,9 +146,9 @@ gradle.properties
 
 ```
 
-其中”<import/>”标签表示引入一个类，比如上例中引入了View类和一个工具类TextUtils，当然也可以引入你自己的类，比如常量类或者工具类。
+其中import标签表示引入一个类，比如上例中引入了View类和一个工具类TextUtils，当然也可以引入你自己的类，比如常量类或者工具类。
 
-下面”<variable/>”标签定义了本页面所需要的各种数据名称或类型，其类型可以是java中的基础类型，或者自定义的类。
+下面variable标签定义了本页面所需要的各种数据名称或类型，其类型可以是java中的基础类型，或者自定义的类。
 
 #### 设置数据
 
@@ -282,8 +283,7 @@ class RecycleListAdapter(private var context: Context, private var datas: Mutabl
 
 #### 为什么要使用自定义Interface？
 
-1，我们平常在Android的开发中，比如如果要设置一个View的点击事件，通常通过view.setOnClickListener()来实现的，这种方式略显繁琐，而且要通过findViewById()来获取到此View的引用。使用了Data Binding技术以后，我们无需这样做，可以直接通过在xml布局文件中设置一个Interface的实现来直接调用某个方法，非常方便。
-
+1，我们平常在Android的开发中，比如如果要设置一个View的点击事件，通常通过view.setOnClickListener()来实现的，这种方式略显繁琐，而且要通过findViewById()来获取到此View的引用。使用了Data Binding技术以后，我们无需这样做，可以直接通过在xml布局文件中设置一个Interface的实现来直接调用某个方法，非常方便。<br/>
 2，除了上面说的方便之外，当两个Fragment之间需要通信时，Android是强烈不建议两个Fragment之间直接通信的，它们之间的通信只能通过他们所在的Activity来进行中转。使用Data Binding之后，这种情况处理起来就简单了很多，通过将一个Interface的实现设置到两个Fragment的xml布局文件中就可以实现。
 
 #### 定义接口
@@ -367,11 +367,9 @@ class MainActivity : AppCompatActivity(),IMainActivity {
 
 @以下内容摘自[我为什么放弃在项目中使用DataBinding](https://blog.csdn.net/maosidiaoxian/article/details/85560206)
 
-一、xml代码耦合度增加，业务逻辑内聚性降低。不利于项目质量的持续发展。
-
-二、经常需要手动点击编译，影响开发体验。 在布局里新增的Data Binding变量，在Java/Kotlin中要使用的时候需要先点击编译等待完成，否则可能引用不到对应的BR类或该类里的变量。另外，已经删除的变量，如果不执行清理，在BR类里也依然存在，无法如R类一样更新及时。
-
-三、失去了Kotlin语法糖的优势。 Kotlin扩展函数的特点可以使得代码尽可能的简洁直观易于阅读，而在xml中目前只支持Java语法而不支持Kotlin，所以也失去了使用Kotlin作为开发语言所带来的优势。
+1、xml代码耦合度增加，业务逻辑内聚性降低。不利于项目质量的持续发展。<br/>
+2、经常需要手动点击编译，影响开发体验。 在布局里新增的Data Binding变量，在Java/Kotlin中要使用的时候需要先点击编译等待完成，否则可能引用不到对应的BR类或该类里的变量。另外，已经删除的变量，如果不执行清理，在BR类里也依然存在，无法如R类一样更新及时。<br/>
+3、失去了Kotlin语法糖的优势。 Kotlin扩展函数的特点可以使得代码尽可能的简洁直观易于阅读，而在xml中目前只支持Java语法而不支持Kotlin，所以也失去了使用Kotlin作为开发语言所带来的优势。
 
 ## 结语
 
