@@ -106,7 +106,7 @@ gradle.properties
 
 #### 注意事项
 
-**在绑定页面之前，记得先“Mark project”工程。IDEA会自动根据刚才加入<layout>的xml布局视图生成对应的DataBinding映射类。**
+*在绑定页面之前，记得先“Mark Project”工程。IDEA会自动根据刚才加入layout的xml布局视图生成对应的DataBinding映射类。*
 
 上面我们修改了布局后，下面我们就可以在代码中进行数据绑定了。此时工程中会自动生成该布局对应的java绑定文件:ActivityMainBinding。仔细观察就会发现，这个文件名就是将布局的下划线形式转换成java规范的驼峰形式，后面加上Binding。
 
