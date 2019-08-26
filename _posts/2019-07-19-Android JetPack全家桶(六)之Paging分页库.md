@@ -69,9 +69,8 @@ class CustomPageDataSource(private val bookRepository: BookRepository) : PageKey
         callback.onResult(books, null, 2)
     }
 
-    // 每次分页加载的时候调用
+    // 加载下一页
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Book>) {
-
         val startPage = params.key
         val startIndex = ((startPage - 1) * BaseConstant.SINGLE_PAGE_SIZE).toLong() + 1
         val endIndex = startIndex + params.requestedLoadSize - 1
@@ -80,8 +79,14 @@ class CustomPageDataSource(private val bookRepository: BookRepository) : PageKey
         callback.onResult(books, params.key + 1)
     }
 
+    // 加载上一页
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Book>) {
-       // ... 省略 类似loadAfter
+        val startPage = params.key
+        val startIndex = ((startPage - 1) * BaseConstant.SINGLE_PAGE_SIZE).toLong() + 1
+        val endIndex = startIndex + params.requestedLoadSize - 1
+        val books = bookRepository.getPageBooks(startIndex, endIndex)
+
+        callback.onResult(books, params.key - 1)
     }
 }
 
