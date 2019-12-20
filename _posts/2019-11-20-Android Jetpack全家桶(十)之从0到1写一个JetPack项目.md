@@ -34,7 +34,7 @@ Android JetPack是Google在18年IO大会上推荐的一整套组件库，它的�
 
 ### 项目架构
 
-架构上采用了官方的做法，以MVVM架构形式打通整套Jetpack体系流程。详见下图：
+架构上以MVVM架构模式打通了整套Jetpack体系流程。详见下图：
 
 ![架构](/img/toeii/jetpack_extension_read_egg.png)
 
@@ -47,13 +47,13 @@ Android JetPack是Google在18年IO大会上推荐的一整套组件库，它的�
 
 ### 项目展示
 
-以下是拓意阅读Jetpack版项目截图。详见下图：
+以下是拓意阅读Jetpack版项目截图。
 
 ![展示](/img/toeii/icon_jetpackapp_screenshots.png)
 
 ### 项目下载
 
-以下是拓意阅读Jetpack版下载地址。详见下图：
+以下是拓意阅读Jetpack版下载地址。
 
 ![下载](/img/toeii/jetpckapk_download_code.png)
 
