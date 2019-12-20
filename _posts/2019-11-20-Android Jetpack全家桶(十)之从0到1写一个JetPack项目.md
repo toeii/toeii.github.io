@@ -59,7 +59,7 @@ Android JetPack是Google在18年IO大会上推荐的一整套组件库，它的�
 
 ## 项目说明（以日报模块为例）
 
-主体思路：
+### 主体思路：
 
 - 1，视图（生成ViewDataBinding，关联ViewModel）
 
@@ -67,9 +67,9 @@ Android JetPack是Google在18年IO大会上推荐的一整套组件库，它的�
 
 - 3，交互（PagedList建立关联，填充Adapter数据）
 
-具体实现：
+### 具体实现：
 
-fragment_daily.xml
+#### fragment_daily.xml
 
 ```XML
 
@@ -110,7 +110,7 @@ fragment_daily.xml
 
 ```
 
-DailyFragment.kt
+#### DailyFragment.kt
 
 ```java
 
@@ -193,7 +193,7 @@ class DailyFragment : BaseFragment<FragmentDailyBinding>(){
 
 ```
 
-DailyPaging.kt
+#### DailyPaging.kt
 
 ```java
 
@@ -256,7 +256,7 @@ class DailyDataSourceFactory(private val repository: DailyRepository) : DataSour
 
 ```
 
-DailyViewModel.kt
+#### DailyViewModel.kt
 
 ```java
 
@@ -288,7 +288,7 @@ class DailyModelFactory(private val repository: DailyRepository) : ViewModelProv
 
 ```
 
-DailyAdapter.kt
+#### DailyAdapter.kt
 
 ```java
 
@@ -412,7 +412,7 @@ private fun initViewBindingImpl(itemView: View): ViewDataBinding? =
 
 ```
 
-## 总结
+## 结语
 
 以上是项目模块的实现分析，如果理解不透可以参考学习一下整体项目。[项目地址点我。](https://github.com/toeii/JetPackExampleApp_ExtensionRead)
 
