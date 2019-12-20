@@ -28,7 +28,7 @@ Android JetPack是Google在18年IO大会上推荐的一整套组件库，它的�
 
 ## 项目介绍
 
-因为拓意阅读之前有写过flutter版本，所以这次打算结合原有的api和交互效果写一款Jetpack版本，旨在结合博客内容加深学习印象，和大家一起真正的使用Jetpack组件。
+因为拓意阅读之前有写过[flutter版本](https://github.com/toeii/FlutterExampleApp_ExtensionRead)，所以这次打算结合原有的api和交互效果写一款Jetpack版本，旨在结合博客内容加深学习印象，和大家一起真正的使用Jetpack组件。
 
 该应用数据主要来源于开眼api。采用了QMUI + Jetpack MVVM的架构。使用QMUI也是一种尝试，不过在实际用过之后感觉该UI库不符合预期，并不推荐大家在商业化项目中使用。
 
@@ -61,11 +61,11 @@ Android JetPack是Google在18年IO大会上推荐的一整套组件库，它的�
 
 主体思路：
 
-    1，视图（生成ViewDataBinding，关联ViewModel）
+- 1，视图（生成ViewDataBinding，关联ViewModel）
 
-    2，数据来源（配置Paging组件，利用DataSource控制数据）
+- 2，数据来源（配置Paging组件，利用DataSource控制数据）
 
-    3，交互（PagedList建立关联，填充Adapter数据）
+- 3，交互（PagedList建立关联，填充Adapter数据）
 
 具体实现：
 
