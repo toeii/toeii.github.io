@@ -24,16 +24,13 @@ Android JetPack是Google在18年IO大会上推荐的一整套组件库，它的�
 - [Android Jetpack全家桶(七)之WorkManager工作管理](https://toeii.github.io/2019/08/01/Android-Jetpack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E4%B8%83)%E4%B9%8BWorkManager%E5%B7%A5%E4%BD%9C%E7%AE%A1%E7%90%86/)<br />
 - [Android Jetpack全家桶(八)之Navigation导航](https://toeii.github.io/2019/08/06/Android-Jetpack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E5%85%AB)%E4%B9%8BNavigation%E5%AF%BC%E8%88%AA/)<br />
 - [Android Jetpack全家桶(九)之DataBinding数据绑定](https://toeii.github.io/2019/08/07/Android-Jetpack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E4%B9%9D)%E4%B9%8BDataBinding%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/)<br />
-- [Android Jetpack全家桶(十)之从0到1写一个JetPack项目](https://toeii.github.io/2019/08/07/Android-Jetpack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E5%8D%81)%E4%B9%8B%E4%BB%8E0%E5%88%B01%E5%86%99%E4%B8%80%E4%B8%AAJetPack%E5%B0%8F%E9%A1%B9%E7%9B%AE/)<br />
+- [Android Jetpack全家桶(十)之从0到1写一个Jetpack项目](https://toeii.github.io/2019/08/07/Android-Jetpack%E5%85%A8%E5%AE%B6%E6%A1%B6(%E5%8D%81)%E4%B9%8B%E4%BB%8E0%E5%88%B01%E5%86%99%E4%B8%80%E4%B8%AAJetPack%E5%B0%8F%E9%A1%B9%E7%9B%AE/)<br />
 
-
-## 前言
+## 项目介绍
 
 因为拓意阅读之前有写过flutter版本，所以这次打算结合原有的api和交互效果写一款Jetpack版本，旨在结合博客内容加深学习印象，和大家一起真正的使用Jetpack组件。
 
 该应用数据主要来源于开眼api。采用了QMUI + Jetpack MVVM的架构。使用QMUI也是一种尝试，不过在实际用过之后感觉该UI库不符合预期，并不推荐大家在商业化项目中使用。
-
-## 项目介绍
 
 ### 项目架构
 
