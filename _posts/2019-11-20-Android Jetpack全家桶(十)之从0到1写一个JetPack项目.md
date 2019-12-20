@@ -414,7 +414,7 @@ private fun initViewBindingImpl(itemView: View): ViewDataBinding? =
 
 ## 结语
 
-以上是项目模块的实现分析，如果理解不透可以参考学习一下整体项目。[ --->>> 项目地址](https://github.com/toeii/JetPackExampleApp_ExtensionRead)
+以上是项目模块的实现分析，如果理解不透可以参考学习一下整体项目。[ --->>> 进入项目](https://github.com/toeii/JetPackExampleApp_ExtensionRead)
 
 项目的开发主要为了加深学习印象和与实战相结合。希望对大家学习和了解Jetpack组件有所帮助。
 
