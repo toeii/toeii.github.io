@@ -122,19 +122,14 @@ if (deadlineNs != FOREVER_NS && !mRecyclerPool.willCreateInTime(type, start, dea
 ## 四级缓存
 RecycleView的四级缓存是由三个类共同作用完成的，Recycler、recyclerViewPool和ViewCacheExtension。
 
-Recycler
-    用于管理已经废弃或者与RecyclerView分离的ViewHolder，这里面有两个重要的成员
+Recycler用于管理已经废弃或者与RecyclerView分离的ViewHolder，这里面有两个重要的成员分别是屏幕内缓存和屏幕外缓存。
+屏幕内缓存指在屏幕中显示的ViewHolder，这些ViewHolder会缓存在mAttachedScrap、mChangedScrap中。
+mChangedScrap表示数据已经改变的viewHolder列表，mAttachedScrap未与RecyclerView分离的ViewHolder列表。
+屏幕外缓存指当列表滑动出了屏幕时，ViewHolder会被缓存在 mCachedViews ，其大小由mViewCacheMax决定，默认DEFAULT_CACHE_SIZE为2，可通过Recyclerview.setItemViewCacheSize()动态设置。
 
-屏幕内缓存 屏幕内缓存指在屏幕中显示的ViewHolder，这些ViewHolder会缓存在mAttachedScrap、mChangedScrap中 
-mChangedScrap 表示数据已经改变的viewHolder列表 mAttachedScrap未与RecyclerView分离的ViewHolder列表
-屏幕外缓存 当列表滑动出了屏幕时，ViewHolder会被缓存在 mCachedViews ，其大小由mViewCacheMax决定，默认DEFAULT_CACHE_SIZE为2，可通过Recyclerview.setItemViewCacheSize()动态设置。
+RecyclerViewPool是用来缓存ViewHolder，如果多个RecyclerView之间用setRecyclerViewPool(RecyclerViewPool)设置同一个RecyclerViewPool，他们就可以共享ViewHolder。
 
-RecyclerViewPool
-
-    RecyclerViewPool类是用来缓存ViewHolder用，如果多个RecyclerView之间用setRecyclerViewPool(RecyclerViewPool)设置同一个RecyclerViewPool，他们就可以共享ViewHolder。
-
-ViewCacheExtension
-    开发者可自定义的一层缓存，是虚拟类ViewCacheExtension的一个实例，开发者可实现方法getViewForPositionAndType(Recycler recycler, int position, int type)来实现自己的缓存。
+ViewCacheExtension是开发者可自定义的一层缓存，是虚拟类ViewCacheExtension的一个实例，开发者可实现方法getViewForPositionAndType(Recycler recycler, int position, int type)来实现自己的缓存。
 
 一张图理解
 
