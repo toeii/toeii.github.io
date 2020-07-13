@@ -11,6 +11,7 @@ tags:
 ---
 
 ## 前言
+
 利用[flutter_screenutil](https://github.com/OpenFlutter/flutter_screenutil)是目前Flutter屏幕适配用得最多得一种，其实原理也很简单。
 
 比如我们设计师设计的UI是根据iPhone6来做的，我们知道 iPhone6的分辨率是750 * 1334(px)，
