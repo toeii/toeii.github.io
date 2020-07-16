@@ -35,8 +35,7 @@ Launcher3主要分为拖动层（DragLayer）、工作区（WorkSpace）、搜�
 
 如图所示。最外层的是DragLayer层，可以从onTouchEvent中看出，它对AppWidgetResizeFrames做了传递判断，由此可见，它的作用是协调管理整个ViewGroup的拖动。WorkSpace作为DragLayer的子控件，它负责的是控制CellLayout的区域。换种说法就是，每一个CellLayout所包含的快捷图标、文件夹、小部件，都是由WorkSpace来处理和测量的。在它们之上，还有一个SearchDropTargetView的控件，该控件就是在用户长按快捷方式拖拽时所显示的View，当然，可以继承它去改造成符合业务的View来替换显示。
 
-在整个ViewGroup层级中，所占比例最大的是CellLayout，它是桌面页面的基本单元，快捷图标、文件夹、小部件都是显示在它之上的，并且交给WorkSpace测量控制区域大小。滑动桌面，实际上就是多个CellLayout之间的切换。而为了显示CellLayout的切换，就有了中间的指示点，它叫做PageIndicator。另外为了符合更加人性化，提供常驻快捷方式位置栏，也就是Hotseat，它一般放置短信，拨号等最常用的应用，也可以定制化其他快捷方式，
-用户左右滑动屏幕时，该控件不做滑动处理。
+在整个ViewGroup层级中，所占比例最大的是CellLayout，它是桌面页面的基本单元，快捷图标、文件夹、小部件都是显示在它之上的，并且交给WorkSpace测量控制区域大小。滑动桌面，实际上就是多个CellLayout之间的切换。而为了显示CellLayout的切换，就有了中间的指示点，它叫做PageIndicator。另外为了符合更加人性化，提供常驻快捷方式位置栏，也就是Hotseat，它一般放置短信，拨号等最常用的应用，也可以定制化其他快捷方式，用户左右滑动屏幕时，该控件不做滑动处理。
 
 ## 数据加载过程
 
@@ -193,7 +192,7 @@ public List<LauncherActivityInfoCompat> getActivityList(String packageName,
 
 ## 结语
 
-想查看源码的话可以[点击这里](https://github.com/toeii/Launcher3)找到相关代码，希望对大家学习和了解Launcher开发有所帮助。
+本系列文章相关代码，可以通过点击[这里](https://github.com/toeii/Launcher3)找到。希望对大家学习和了解Launcher开发有所帮助。
 
 
 
