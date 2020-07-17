@@ -39,8 +39,7 @@ Launcher中的应用图标有时候因为厂商系统图标的缘故导致大小
 
 private CacheEntry cacheLocked(ComponentName componentName, LauncherActivityInfoCompat info,
             UserHandleCompat user, boolean usePackageIcon, boolean useLowResIcon) {
-
-    CacheEntry entry = mCache.get(componentName);
+                CacheEntry entry = mCache.get(componentName);
     if (entry == null) {
         entry = new CacheEntry();
         mCache.put(componentName, entry);

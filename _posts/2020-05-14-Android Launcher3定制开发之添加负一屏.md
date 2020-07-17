@@ -37,10 +37,11 @@ Launcher定制开发中，负一屏的定制几乎是所有Launcher应用都需�
 ```java
 
     protected boolean hasCustomContentToLeft() {
-//        if (mLauncherCallbacks != null) {
-//            return mLauncherCallbacks.hasCustomContentToLeft();
-//        }
-//        return false;
+    //    if (mLauncherCallbacks != null) {
+    //        return mLauncherCallbacks.hasCustomContentToLeft();
+    //    }
+    //    return false;
+    
         //TODO 负一屏处理
         return true;
     }
@@ -52,9 +53,9 @@ Launcher定制开发中，负一屏的定制几乎是所有Launcher应用都需�
 ```java
 
     protected void populateCustomContentContainer() {
-//        if (mLauncherCallbacks != null) {
-//            mLauncherCallbacks.populateCustomContentContainer();
-//        }
+    //    if (mLauncherCallbacks != null) {
+    //        mLauncherCallbacks.populateCustomContentContainer();
+    //    }
 
         //TODO 负一屏Custom View
         View customView = getLayoutInflater().inflate(R.layout.activity_negative_operation, null);

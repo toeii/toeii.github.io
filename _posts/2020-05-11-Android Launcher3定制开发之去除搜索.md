@@ -49,15 +49,15 @@ Launcher在初始化的时候，会通过shouldShowIntroScreen检查，是否是
 
     @Thunk void showFirstRunClings() {
         //TODO 屏蔽开机引导提示
-//        LauncherClings launcherClings = new LauncherClings(this);
-//        if (launcherClings.shouldShowFirstRunOrMigrationClings()) {
-//            mClings = launcherClings;
-//            if (mModel.canMigrateFromOldLauncherDb(this)) {
-//                launcherClings.showMigrationCling();
-//            } else {
-//                launcherClings.showLongPressCling(true);
-//            }
-//        }
+    //    LauncherClings launcherClings = new LauncherClings(this);
+    //    if (launcherClings.shouldShowFirstRunOrMigrationClings()) {
+    //        mClings = launcherClings;
+    //        if (mModel.canMigrateFromOldLauncherDb(this)) {
+    //            launcherClings.showMigrationCling();
+    //        } else {
+    //            launcherClings.showLongPressCling(true);
+    //        }
+    //    }
     }
 
 ```
