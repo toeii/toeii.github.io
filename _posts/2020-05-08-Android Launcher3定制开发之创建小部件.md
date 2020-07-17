@@ -77,15 +77,24 @@ tags:
 以下是官方文档对appwidget-provider属性的解释：
 
 - minWidth 和 minHeight 属性的值指定应用微件默认情况下占用的最小空间。默认的主屏幕根据定义了高度和宽度的单元格的网格在其窗口中放置应用微件。如果应用微件的最小宽度或高度的值与单元格的尺寸不匹配，则应用微件的尺寸会向上舍入到最接近的单元格大小。
+
 - minResizeWidth 和 minResizeHeight 属性指定应用微件的绝对最小大小。这些值应指定应用微件的大小低于多大就会难以辨认或无法使用。使用这些属性，用户可以将微件的大小调整为可能小于由 minWidth 和 minHeight 属性定义的默认微件大小。这些属性是在 Android 3.1 中引入的。
+
 - updatePeriodMillis 属性定义应用微件框架通过调用 onUpdate() 回调方法来从 AppWidgetProvider 请求更新的频率应该是多大。不能保证实际更新按此值正好准时发生，我们建议尽可能降低更新频率 - 或许不超过每小时一次，以节省电池电量。您也可以允许用户在配置中调整频率 - 有些人可能希望股票行情自动收录器每 15 分钟更新一次，另有一些人也可能希望它一天只更新 4 次。
+
 - initialLayout 属性指向用于定义应用微件布局的布局资源。
 configure 属性定义要在用户添加应用微件时启动以便用户配置应用微件属性的 Activity。这是可选的（请阅读下文的创建应用微件配置 Activity）。
+
 - previewImage 属性指定预览来描绘应用微件经过配置后是什么样子的，用户在选择应用微件时会看到该预览。如果未提供，则用户会看到应用的启动器图标。此字段对应于 AndroidManifest.xml 文件的 <receiver> 元素中的 android:previewImage 属性。如需详细了解如何使用 previewImage，请参阅设置预览图片。此属性是在 Android 3.0 中引入的。
+
 - autoAdvanceViewId 属性指定应由应用微件的托管应用自动跳转的应用微件子视图的视图 ID。此属性是在 Android 3.0 中引入的。
+
 - resizeMode 属性指定可以按什么规则来调整微件的大小。您可以使用此属性来让主屏幕微件在横轴上可调整大小、在纵轴上可调整大小，或者在这两个轴上均可调整大小。用户可轻触并按住微件以显示其大小调整手柄，然后拖动水平和/或垂直手柄以更改布局网格上的大小。resizeMode 属性的值包括“horizontal”、“vertical”和“none”。要将微件声明为在水平和垂直方向上均可调整大小，请提供值“horizontal|vertical”。此属性是在 Android 3.1 中引入的。
+
 - minResizeHeight 属性指定可将微件大小调整到的最小高度（以 dp 为单位）。如果此字段的值大于 minHeight 或未启用垂直大小调整（请参阅 resizeMode），则此字段不起作用。此属性是在 Android 4.0 中引入的。
+
 - minResizeWidth 属性指定可将微件大小调整到的最小宽度（以 dp 为单位）。如果此字段的值大于 minWidth 或未启用水平大小调整（请参阅 resizeMode），则此字段不起作用。此属性是在 Android 4.0 中引入的。
+
 - widgetCategory 属性声明应用微件是否可以显示在主屏幕 (home_screen) 和/或锁定屏幕 (keyguard) 上。只有低于 5.0 的 Android 版本才支持锁定屏幕微件。对于 Android 5.0 及更高版本，只有 home_screen 有效。
 
 之后，创建小部件Widget Layout布局文件
