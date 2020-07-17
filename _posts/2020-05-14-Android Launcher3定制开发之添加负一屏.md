@@ -28,7 +28,64 @@ tags:
 
 ## 简介
 
-Android Launcher3定制开发之添加负一屏（待编辑）
+Launcher定制开发中，负一屏的定制几乎是所有Launcher应用都需要做的事情。所以，本文将说一下如何添加负一屏，并且如何监听滑动处理负一屏信息加载。
 
+## 添加负一屏
+
+首先，在Launcher.hasCustomContentToLeft中，默认开启显示负一屏View。
+
+```java
+
+    protected boolean hasCustomContentToLeft() {
+//        if (mLauncherCallbacks != null) {
+//            return mLauncherCallbacks.hasCustomContentToLeft();
+//        }
+//        return false;
+        //TODO 负一屏处理
+        return true;
+    }
+
+```
+
+接着，在Launcher.populateCustomContentContainer中替换负一屏加载自定义LayoutView
+
+```java
+
+    protected void populateCustomContentContainer() {
+//        if (mLauncherCallbacks != null) {
+//            mLauncherCallbacks.populateCustomContentContainer();
+//        }
+
+        //TODO 负一屏Custom View
+        View customView = getLayoutInflater().inflate(R.layout.activity_negative_operation, null);
+        addToCustomContentPage(customView,null,"");
+    }
+
+```
+
+以上，负一屏就添加完了。
+
+## 桌面滑动监听，并处理负一屏数据加载
+
+负一屏虽然添加完成了，但是多数业务场景都是要对负一屏进行刷新和更新数据的。那么怎么办呢，我们可以写一套观察者模式，采用订阅的方式更换数据集，但是针对场景来说，也可以直接监听是否滑动到了负一屏来进行无感更新(默认取缓存数据再替换服务端返回数据)。那么，我们怎么做呢？其实很简单。Launcher.onPageSwitch就可以接收到滑动回调结果，见下：
+
+```java
+
+    @Override
+    public void onPageSwitch(View newPage, int newPageIndex) {
+        if (mLauncherCallbacks != null) {
+            mLauncherCallbacks.onPageSwitch(newPage, newPageIndex);
+        }
+
+        if(newPageIndex == 0){//TODO 负一屏加载
+            notifyNegativeData();
+        }
+    }
+
+```
+
+## 结语
+
+如果读完本文还有不懂的地方，可以结合代码加深理解，代码通过点击[这里](https://github.com/toeii/Launcher3)找到。希望对大家学习和了解Launcher开发有所帮助。
 
 

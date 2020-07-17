@@ -27,7 +27,65 @@ tags:
 
 ## 简介
 
-Android Launcher3定制开发之去除搜索（待编辑）
+用户在开启Launcher的时候，弹出默认的开启引导往往显得有些碍事，我们可以通过去除或者自定义引导完善业务场景。同时，本文也将教大家如何把首屏默认的google搜索栏小部件去除掉。
 
+## 去除桌面引导
 
+Launcher在初始化的时候，会通过shouldShowIntroScreen检查，是否是第一次运行。
+```java
+
+    if (shouldShowIntroScreen()) {
+        showIntroScreen();
+    } else {
+        showFirstRunActivity();
+        showFirstRunClings();
+    }
+
+```
+    
+可以看到Launcher.showFirstRunClings方法，它处理了显示第一次运行的引导窗。那么，我们直接将代码屏蔽掉。
+
+```java
+
+    @Thunk void showFirstRunClings() {
+        //TODO 屏蔽开机引导提示
+//        LauncherClings launcherClings = new LauncherClings(this);
+//        if (launcherClings.shouldShowFirstRunOrMigrationClings()) {
+//            mClings = launcherClings;
+//            if (mModel.canMigrateFromOldLauncherDb(this)) {
+//                launcherClings.showMigrationCling();
+//            } else {
+//                launcherClings.showLongPressCling(true);
+//            }
+//        }
+    }
+
+```
+
+## 自定义引导
+
+结合上面的代码分析，可以看到Launcher.showFirstRunActivity方法中，它处理了第一运行的Activity。那么，我们可以在这个方法中启动自己想要替换的Activity，做到引导界面替换。由于这里已经阐述的很明确了，这里就不贴代码了，可以自己修改试一试。
+
+## 去除预置Google搜索栏
+
+在DeviceProfile类中找到layout方法，可以看出搜索栏在这里做了处理，那么我们将它隐藏就可以了。
+
+```java
+
+  public void layout(Launcher launcher) {
+        FrameLayout.LayoutParams lp;
+        boolean hasVerticalBarLayout = isVerticalBarLayout();
+        final boolean isLayoutRtl = Utilities.isRtl(launcher.getResources());
+        View searchBar = launcher.getSearchDropTargetBar();
+        ...
+        searchBar.setLayoutParams(lp);
+        //隐藏
+        searchBar.setVisibility(View.GONE);
+  }
+
+```
+
+## 结语
+
+如果读完本文还有不懂的地方，可以结合代码加深理解，代码通过点击[这里](https://github.com/toeii/Launcher3)找到。希望对大家学习和了解Launcher开发有所帮助。
 

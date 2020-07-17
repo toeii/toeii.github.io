@@ -27,7 +27,56 @@ tags:
 
 ## 简介
 
-Android Launcher3定制开发之修改快捷方式图标（待编辑）
+Launcher中的应用图标有时候因为厂商系统图标的缘故导致大小不一，样式不统一等等。又或者是，业务上需要将某个包名对应的应用改成其他的图标显示，那么这样就需要修改应用的图标了。
 
+## 具体实现
 
+首先我们通过前几篇文章可以知道，应用图标是做了缓存的，那么我们直接看IconCache类。可以看到，IconCache中有一个getTitleAndIcon方法，应用图标、标题等信息就是通过它来获取的。我们再找到关键cacheLocked方法，并通过修改CacheEntry获取参数来自定义自己想要的应用图标。
 
+下面写一个例子以供参考：
+
+```java
+
+private CacheEntry cacheLocked(ComponentName componentName, LauncherActivityInfoCompat info,
+            UserHandleCompat user, boolean usePackageIcon, boolean useLowResIcon) {
+
+    CacheEntry entry = mCache.get(componentName);
+    if (entry == null) {
+        entry = new CacheEntry();
+        mCache.put(componentName, entry);
+        ComponentName key = LauncherModel.getComponentNameFromResolveInfo(info);
+        if (labelCache != null && labelCache.containsKey(key)) {
+            entry.title = labelCache.get(key).toString();
+        } else {
+            entry.title = info.loadLabel(mPackageManager).toString();
+            if (labelCache != null) {
+                labelCache.put(key, entry.title);
+            }
+        }
+        if (entry.title == null) {
+            entry.title = info.activityInfo.name;
+        }
+        Drawable icon;
+        int index = sysIndexOf(componentName.getClassName());
+        icon = getFullResIcon(info);
+        if (index >= 0) {
+            entry.icon = Utilities.createIconBitmap(icon, mContext);
+        } else {
+            entry.icon = Utilities.createIconBitmap(getFullResIcon(info), mContext);
+                    icon, mContext, true);
+        }
+
+        // 此处即为替换图标代码
+        if("第三方应用的componentName".equals(componentName.toString())){
+            entry.icon = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.xxx);
+        }
+ 
+    }
+    return entry;
+}  
+
+```
+
+## 结语
+
+如果读完本文还有不懂的地方，可以结合代码加深理解，代码通过点击[这里](https://github.com/toeii/Launcher3)找到。希望对大家学习和了解Launcher开发有所帮助。
