@@ -31,7 +31,9 @@ tags:
 
 ## 效果图
 
-![时间小部件](/img/toeii/launcher_apptimewidget.jpg =240)
+<!-- ![时间小部件](/img/toeii/launcher_apptimewidget.jpg) -->
+
+<img src="./img/toeii/launcher_apptimewidget.jpg" width = "400" height = "280" alt="时间小部件" />
 
 ## 如何创建
 
@@ -40,6 +42,7 @@ tags:
 首先，声明应用小部件，拿到AppWidgetProviderInfo和AppWidgetProvider类对象。下面是官方文档对它们的描述：
 
 - AppWidgetProviderInfo：描述应用微件的元数据，如应用微件的布局、更新频率和 AppWidgetProvider 类。此对象应在 XML 中定义。
+
 - AppWidgetProvider：描述应用微件的元数据，如应用微件的布局、更新频率和 AppWidgetProvider 类。此对象应在 XML 中定义。
 
 ```XML
