@@ -36,6 +36,8 @@ tags:
 - 检测替换APP时并更新Workspace
 - 改造Workspace的长按呼出菜单
 
+一句话概括就是“屏蔽原有抽屉化业务代码，将数据全放入第一层桌面，然后新增更新第一层桌面的相关业务代码”
+
 ## 具体实现
 
 ### 修改Hotseat中的allAppsButton相关业务
@@ -238,8 +240,7 @@ public static boolean supportsDrop(Object info) {
 
 ## 结语
 
-Launcher横向化到此也改造完毕，整体思路就是“屏蔽原有抽屉化业务代码，将数据全放入第一层桌面，然后新增更新第一层桌面代码”
-
+Launcher横向化到此也改造完毕。
 本系列文章相关代码，可以通过点击[这里](https://github.com/toeii/Launcher3)找到。希望对大家学习和了解Launcher开发有所帮助。
 
 

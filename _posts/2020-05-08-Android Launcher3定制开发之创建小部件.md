@@ -31,7 +31,7 @@ tags:
 
 ## 效果图
 
-![时间小部件](/img/toeii/launcher_apptimewidget.png)
+![时间小部件](/img/toeii/launcher_apptimewidget.jpg)
 
 ## 如何创建
 
